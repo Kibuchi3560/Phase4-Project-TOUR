@@ -41,7 +41,7 @@ const Navbar = () => {
       <nav className="nav nav-pills nav-fill">
         <Link className="nav-link active" to="/sites">Destinations</Link>
         <Link className="nav-link" to="/itineraries">Itineraries</Link>
-        <Link className="nav-link" to="/profile">Profile</Link>
+      
         <Button variant="primary" onClick={handleShow}>
           SIGN IN/SIGN UP
         </Button>

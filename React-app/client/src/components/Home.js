@@ -11,7 +11,7 @@ const Home = () => {
       <Hero />
       <div className="card-grid">
         <TipsCard />
-        <ReviewsCard />
+        <ReviewsCard /> 
         <AdventureCard />
       </div>
     </main>

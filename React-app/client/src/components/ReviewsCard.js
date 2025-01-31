@@ -35,7 +35,7 @@ const ReviewsCard = () => {
           ))}
         </div>
       </div>
-      <button className="card-button">CLICK</button>
+      
     </div>
   );
 };

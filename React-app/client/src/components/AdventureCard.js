@@ -21,7 +21,7 @@ const AdventureCard = () => {
   // Open modal and fetch data
   const handleShow = () => {
     setShowModal(true);
-    fetchSites(); // Fetch data when modal opens
+    fetchSites(); 
   };
 
   // Close modal

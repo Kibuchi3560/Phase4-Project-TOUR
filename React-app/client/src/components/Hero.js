@@ -8,6 +8,7 @@ const Hero = () => {
       <div className="hero-content">
         <h2>SAFARI ADVENTURE</h2>
         <p>EXPERT TRAVEL GROUP</p>
+        <p>We aim to connect our Users with a travel group in order to enjoy the parts of the world.</p>
         <div className="hero-image">
         <video width="900" controls loop autoPlay muted>
       <source src={video} type="video/mp4" />

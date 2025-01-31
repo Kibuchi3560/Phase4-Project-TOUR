@@ -40,6 +40,12 @@ def seed_data():
     # Create Itineraries (convert date strings to date objects)
     itinerary1 = Itinerary(title="Everest Trek", description="7-day trek", date=date(2024, 10, 1), travel_group_id=group1.id)
     itinerary2 = Itinerary(title="Great Wall Tour", description="3-day tour", date=date(2024, 11, 1), travel_group_id=group2.id)
+    itinerary1 = Itinerary(
+    title="Safari Adventure",
+    description="5-day wildlife safari",
+    date=datetime.date(2024, 6, 1),
+    travel_group_id=group1.id
+)
     db.session.add_all([itinerary1, itinerary2])
     db.session.commit()
 

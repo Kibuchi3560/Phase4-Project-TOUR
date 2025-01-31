@@ -92,5 +92,31 @@ def handle_sites(site_id=None):
 
 # Repeat similar routes for Reviews, TravelGroups, and Itineraries
 
+@app.route('/api/reviews', methods=['GET'])
+def get_reviews():
+    reviews = Review.query.all()
+    return jsonify([{
+        'id': review.id,
+        'rating': review.rating,
+        'comment': review.comment,
+        'user': {'id': review.user.id, 'name': review.user.name},
+        'site': {'id': review.site.id, 'name': review.site.name}
+    } for review in reviews])
+
+@app.route('/api/travelgroups', methods=['GET'])
+def get_travelgroups():
+    groups = TravelGroup.query.all()
+    return jsonify([group.to_dict() for group in groups])
+
+@app.route('/api/sites', methods=['GET'])
+def get_sites():
+    sites = Site.query.all()
+    return jsonify([site.to_dict() for site in sites])
+
+@app.route('/api/itineraries', methods=['GET'])
+def get_itineraries():
+    itineraries = Itinerary.query.all()
+    return jsonify([itinerary.to_dict() for itinerary in itineraries])
+
 if __name__ == '__main__':
     app.run(debug=True)
