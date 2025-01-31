@@ -1,0 +1,11 @@
+.user-profile {
+    padding: 2rem;
+  }
+  
+  .user-profile h2 {
+    margin-bottom: 1rem;
+  }
+  
+  .user-profile p {
+    margin: 0.5rem 0;
+  }

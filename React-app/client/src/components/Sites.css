@@ -1,0 +1,15 @@
+.sites {
+    padding: 2rem;
+  }
+  
+  .site-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+  
+  .site-item {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 8px;
+  }
