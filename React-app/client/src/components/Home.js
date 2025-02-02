@@ -3,6 +3,7 @@ import Hero from './Hero';
 import TipsCard from './TipsCard';
 import ReviewsCard from './ReviewsCard';
 import AdventureCard from './AdventureCard';
+import ContactCard from './ContactCard';
 import './Home.css';
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
         <TipsCard />
         <ReviewsCard /> 
         <AdventureCard />
+        <ContactCard />
       </div>
     </main>
   );

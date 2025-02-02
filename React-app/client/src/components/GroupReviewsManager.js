@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import GroupList from './GroupList';
 import GroupMembership from './GroupMembership';
 import ReviewForm from './ReviewForm';
+import ContactCard from './ContactCard';
 
 const GroupReviewsManager = ({ userId }) => {
   const [groups, setGroups] = useState([]);
@@ -38,6 +39,7 @@ const GroupReviewsManager = ({ userId }) => {
       <GroupList groups={groups} reviews={reviews} />
       <GroupMembership groups={groups} userId={userId} selectedGroupId={selectedGroupId} setSelectedGroupId={setSelectedGroupId} />
       <ReviewForm userId={userId} groups={groups} selectedGroupId={selectedGroupId} />
+      <ContactCard />
     </div>
   );
 };

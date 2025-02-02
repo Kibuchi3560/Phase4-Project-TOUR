@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const ReviewForm = ({ userId, groups, selectedGroupId, refreshData }) => {
+const ReviewForm = ({ userId, groups, selectedGroupId,  }) => {
   const [reviewData, setReviewData] = useState({
     rating: '',
     comment: '',
@@ -44,7 +44,7 @@ const ReviewForm = ({ userId, groups, selectedGroupId, refreshData }) => {
       if (res.ok) {
         alert('Review submitted successfully!');
         setReviewData({ rating: '', comment: '', travelGroupId: selectedGroupId, site_id: reviewData.site_id });
-        refreshData();
+        
       } else {
         const errorData = await res.json();
         alert('Failed to submit review: ' + (errorData.error || 'Please try again later.'));
