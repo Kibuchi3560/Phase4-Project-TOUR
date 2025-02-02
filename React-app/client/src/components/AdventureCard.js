@@ -1,3 +1,4 @@
+// AdventureCard.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
@@ -8,7 +9,12 @@ const AdventureCard = () => {
   const [sites, setSites] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
-  // Fetch sites from the backend
+  useEffect(() => {
+    if (showModal) {
+      fetchSites();
+    }
+  }, [showModal]);
+
   const fetchSites = async () => {
     try {
       const response = await axios.get('/api/sites');
@@ -18,38 +24,15 @@ const AdventureCard = () => {
     }
   };
 
-  // Open modal and fetch data
-  const handleShow = () => {
-    setShowModal(true);
-    fetchSites(); 
-  };
-
-  // Close modal
-  const handleClose = () => setShowModal(false);
-
   return (
     <div className="card">
       <div className="card-header">
         <h3>EXPLORABLE ADVENTURE</h3>
-        <img 
-                      src={placeholdertipsjpg} 
-                      alt="Travel Tips" 
-                      style={{
-                        width: '100%',
-                        height: '400px',
-                        objectFit: 'cover',
-                        borderRadius: '8px',
-                      }} 
-                      />
-
-                      <p>Do you want to see The available locations for Travel?</p>
+        <img src={placeholdertipsjpg} alt="Travel Tips" className="img-fluid rounded" />
+        <p>Do you want to see the available locations for travel?</p>
       </div>
-      <button className="card-button" onClick={handleShow}>
-        CLICK
-      </button>
-
-      {/* Modal to display sites */}
-      <Modal show={showModal} onHide={handleClose}>
+      <Button onClick={() => setShowModal(true)}>CLICK</Button>
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Available Destinations</Modal.Title>
         </Modal.Header>
@@ -69,9 +52,7 @@ const AdventureCard = () => {
           )}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>Close</Button>
         </Modal.Footer>
       </Modal>
     </div>
@@ -79,3 +60,4 @@ const AdventureCard = () => {
 };
 
 export default AdventureCard;
+

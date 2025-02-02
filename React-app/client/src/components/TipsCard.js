@@ -1,3 +1,4 @@
+// TipsCard.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
@@ -8,7 +9,12 @@ const TipsCard = () => {
   const [travelGroups, setTravelGroups] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
-  // Fetch travel groups from the backend
+  useEffect(() => {
+    if (showModal) {
+      fetchTravelGroups();
+    }
+  }, [showModal]);
+
   const fetchTravelGroups = async () => {
     try {
       const response = await axios.get('/api/travelgroups');
@@ -18,39 +24,16 @@ const TipsCard = () => {
     }
   };
 
-  // Open modal and fetch data
-  const handleShow = () => {
-    setShowModal(true);
-    fetchTravelGroups(); // Fetch data when modal opens
-  };
-
-  // Close modal
-  const handleClose = () => setShowModal(false);
-
   return (
     <div className="card">
       <div className="card-header">
         <h3>TRAVEL GROUP</h3>
-        
-        <img 
-              src={placeholderherojpg} 
-              alt="Travel Tips" 
-              style={{
-                width: '100%',
-                height: '400px',
-                objectFit: 'cover',
-                borderRadius: '8px',
-              }} 
-              />
-              <p>Want to see The Available groups??</p>
-              <p>Available Groups for a group travel CLICK The Button</p>
+        <img src={placeholderherojpg} alt="Travel Tips" className="img-fluid rounded" />
+        <p>Want to see the available groups?</p>
+        <p>Click the button below to view available groups for group travel.</p>
       </div>
-      <button className="card-button" onClick={handleShow}>
-        CLICK
-      </button>
-
-      {/* Modal to display travel groups */}
-      <Modal show={showModal} onHide={handleClose}>
+      <Button onClick={() => setShowModal(true)}>CLICK</Button>
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Available Travel Groups</Modal.Title>
         </Modal.Header>
@@ -69,9 +52,7 @@ const TipsCard = () => {
           )}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>Close</Button>
         </Modal.Footer>
       </Modal>
     </div>
